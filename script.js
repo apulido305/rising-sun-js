@@ -6,9 +6,12 @@ window.addEventListener('load', function(){
 function getWeatherData () {
   // const data = this.responseText;
   const data = JSON.parse(this.responseText);
-  console.dir(data);
   const sunrise = console.dir(data.sys.sunrise);
   const sunset = console.dir(data.sys.sunset);
+  const timeNow = new Date().getTime()/1000;
+  const timeSinceSunrise = timeNow - sunrise;
+  const noonTime = sunrise + ((sunset - sunrise) / 2);
+  console.log(noonTime);
 }
 
 const connection = new XMLHttpRequest();
